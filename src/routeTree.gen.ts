@@ -10,33 +10,124 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CotizadorRouteImport } from './routes/cotizador'
+import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
+import { Route as GuiaRouteImport } from './routes/guia'
+import { Route as OportunidadRouteImport } from './routes/oportunidad'
+import { Route as SolucionesRouteImport } from './routes/soluciones'
+import { Route as SolucionesIndexRouteImport } from './routes/soluciones.index'
+import { Route as SolucionesSlugRouteImport } from './routes/soluciones.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CotizadorRoute = CotizadorRouteImport.update({
+  id: '/cotizador',
+  path: '/cotizador',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosticoRoute = DiagnosticoRouteImport.update({
+  id: '/diagnostico',
+  path: '/diagnostico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaRoute = GuiaRouteImport.update({
+  id: '/guia',
+  path: '/guia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OportunidadRoute = OportunidadRouteImport.update({
+  id: '/oportunidad',
+  path: '/oportunidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucionesRoute = SolucionesRouteImport.update({
+  id: '/soluciones',
+  path: '/soluciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucionesIndexRoute = SolucionesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolucionesRoute,
+} as any)
+const SolucionesSlugRoute = SolucionesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SolucionesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cotizador': typeof CotizadorRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/guia': typeof GuiaRoute
+  '/oportunidad': typeof OportunidadRoute
+  '/soluciones': typeof SolucionesRouteWithChildren
+  '/soluciones/$slug': typeof SolucionesSlugRoute
+  '/soluciones/': typeof SolucionesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cotizador': typeof CotizadorRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/guia': typeof GuiaRoute
+  '/oportunidad': typeof OportunidadRoute
+  '/soluciones/$slug': typeof SolucionesSlugRoute
+  '/soluciones': typeof SolucionesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cotizador': typeof CotizadorRoute
+  '/diagnostico': typeof DiagnosticoRoute
+  '/guia': typeof GuiaRoute
+  '/oportunidad': typeof OportunidadRoute
+  '/soluciones': typeof SolucionesRouteWithChildren
+  '/soluciones/$slug': typeof SolucionesSlugRoute
+  '/soluciones/': typeof SolucionesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cotizador'
+    | '/diagnostico'
+    | '/guia'
+    | '/oportunidad'
+    | '/soluciones'
+    | '/soluciones/$slug'
+    | '/soluciones/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cotizador'
+    | '/diagnostico'
+    | '/guia'
+    | '/oportunidad'
+    | '/soluciones/$slug'
+    | '/soluciones'
+  id:
+    | '__root__'
+    | '/'
+    | '/cotizador'
+    | '/diagnostico'
+    | '/guia'
+    | '/oportunidad'
+    | '/soluciones'
+    | '/soluciones/$slug'
+    | '/soluciones/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CotizadorRoute: typeof CotizadorRoute
+  DiagnosticoRoute: typeof DiagnosticoRoute
+  GuiaRoute: typeof GuiaRoute
+  OportunidadRoute: typeof OportunidadRoute
+  SolucionesRoute: typeof SolucionesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +139,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cotizador': {
+      id: '/cotizador'
+      path: '/cotizador'
+      fullPath: '/cotizador'
+      preLoaderRoute: typeof CotizadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnostico': {
+      id: '/diagnostico'
+      path: '/diagnostico'
+      fullPath: '/diagnostico'
+      preLoaderRoute: typeof DiagnosticoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia': {
+      id: '/guia'
+      path: '/guia'
+      fullPath: '/guia'
+      preLoaderRoute: typeof GuiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oportunidad': {
+      id: '/oportunidad'
+      path: '/oportunidad'
+      fullPath: '/oportunidad'
+      preLoaderRoute: typeof OportunidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soluciones': {
+      id: '/soluciones'
+      path: '/soluciones'
+      fullPath: '/soluciones'
+      preLoaderRoute: typeof SolucionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soluciones/': {
+      id: '/soluciones/'
+      path: '/'
+      fullPath: '/soluciones/'
+      preLoaderRoute: typeof SolucionesIndexRouteImport
+      parentRoute: typeof SolucionesRoute
+    }
+    '/soluciones/$slug': {
+      id: '/soluciones/$slug'
+      path: '/$slug'
+      fullPath: '/soluciones/$slug'
+      preLoaderRoute: typeof SolucionesSlugRouteImport
+      parentRoute: typeof SolucionesRoute
+    }
   }
 }
 
+interface SolucionesRouteChildren {
+  SolucionesSlugRoute: typeof SolucionesSlugRoute
+  SolucionesIndexRoute: typeof SolucionesIndexRoute
+}
+
+const SolucionesRouteChildren: SolucionesRouteChildren = {
+  SolucionesSlugRoute: SolucionesSlugRoute,
+  SolucionesIndexRoute: SolucionesIndexRoute,
+}
+
+const SolucionesRouteWithChildren = SolucionesRoute._addFileChildren(
+  SolucionesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CotizadorRoute: CotizadorRoute,
+  DiagnosticoRoute: DiagnosticoRoute,
+  GuiaRoute: GuiaRoute,
+  OportunidadRoute: OportunidadRoute,
+  SolucionesRoute: SolucionesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
