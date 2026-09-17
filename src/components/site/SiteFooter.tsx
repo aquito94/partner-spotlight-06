@@ -9,6 +9,14 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border/70 bg-surface/60">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
+          <img
+            src={netlifeMark}
+            alt="Netlife Business"
+            width={44}
+            height={44}
+            loading="lazy"
+            className="mb-3 size-11 object-contain"
+          />
           <p className="font-display text-lg font-semibold">Netlife business</p>
           <p className="mt-1 text-sm text-muted-foreground">
             Soluciones digitales · IA · desarrollos In-House
