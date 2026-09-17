@@ -126,15 +126,16 @@
 @utility grid-backdrop {
   background-image:
     radial-gradient(
-      circle at 20% 0%,
-      color-mix(in oklab, var(--brand) 18%, transparent),
-      transparent 55%
+      circle at 18% -10%,
+      color-mix(in oklab, var(--brand) 14%, transparent),
+      transparent 58%
     ),
-    linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--brand-soft) 12%, transparent),
-      transparent 70%
-    );
+    radial-gradient(
+      circle at 88% 0%,
+      color-mix(in oklab, var(--highlight) 16%, transparent),
+      transparent 52%
+    ),
+    linear-gradient(to bottom, var(--surface), var(--background) 72%);
 }
 
 @utility line-grid {
