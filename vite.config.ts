@@ -11,5 +11,25 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    prerender: {
+      enabled: true,
+      pages: [
+        "/",
+        "/soluciones",
+        "/soluciones/agente-ia",
+        "/soluciones/crm-cx",
+        "/soluciones/power-inbox-ai",
+        "/soluciones/dashboards",
+        "/soluciones/integraciones",
+        "/soluciones/automatizaciones",
+        "/soluciones/adopcion-ia",
+        "/soluciones/gastro-ec",
+        "/soluciones/camaras",
+        "/diagnostico",
+        "/cotizador",
+        "/guia",
+        "/oportunidad",
+      ],
+    },
   },
 });
