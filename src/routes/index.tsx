@@ -76,14 +76,13 @@ function Home() {
               Programa aliado estratégico
             </span>
             <h1 className="mt-6 text-4xl leading-[1.05] font-semibold sm:text-5xl lg:text-6xl">
-              No vendemos <span className="text-muted-foreground line-through">un bot</span>.
-              <br />
-              <span className="text-gradient-brand">Resolvemos el problema del negocio.</span>
+              Del problema real al{" "}
+              <span className="text-gradient-brand">resultado que se mide</span>.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Detecta dónde una empresa pierde tiempo, oportunidades, dinero o visibilidad. Desde
-              ese problema construimos la solución con automatización, datos e Inteligencia
-              Artificial.
+              Impulsamos tu negocio con automatización, datos e Inteligencia Artificial:
+              detectamos dónde se pierde tiempo, dinero y oportunidades, y construimos la
+              solución junto a tu equipo y a nuestros aliados estratégicos.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
