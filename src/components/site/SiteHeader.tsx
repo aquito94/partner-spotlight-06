@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
+import netlifeMark from "@/assets/netlife-mark.png";
 import { Button } from "@/components/ui/button";
 
 const nav = [
@@ -18,9 +19,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="flex size-9 items-center justify-center rounded-lg bg-primary/15 text-sm font-bold text-primary ring-1 ring-primary/40">
-            N
-          </span>
+          <img
+            src={netlifeMark}
+            alt="Netlife Business"
+            width={40}
+            height={40}
+            className="size-10 shrink-0 object-contain"
+          />
           <span className="leading-tight">
             <span className="block font-display text-sm font-semibold tracking-tight">
               Netlife business
