@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 
 import guia from "@/assets/guia-comercial.pdf.asset.json";
-import netlifeMark from "@/assets/netlife-mark.png";
+import netlifeLogo from "@/assets/netlife-business-logo.png.asset.json";
 import { trustBadges, trustStatement } from "@/data/portfolio";
 
 export function SiteFooter() {
@@ -11,17 +11,14 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <img
-            src={netlifeMark}
+            src={netlifeLogo.url}
             alt="Netlife Business"
-            width={44}
-            height={44}
+            width={218}
+            height={124}
             loading="lazy"
-            className="mb-3 size-11 object-contain"
+            className="mb-3 h-16 w-auto object-contain"
           />
-          <p className="font-display text-lg font-semibold">Netlife business</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Soluciones digitales · IA · desarrollos In-House
-          </p>
+          <p className="text-sm text-muted-foreground">Soluciones digitales · IA · desarrollos In-House</p>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">{trustStatement}</p>
         </div>
 
