@@ -312,7 +312,7 @@ export const solutions: Solution[] = [
 ];
 
 export const priceDisclaimer =
-  "Valores de entrada. El precio final depende de alcance, usuarios, módulos, volumen, integraciones y personalización.";
+  "Valores referenciales estimados en USD. La cotización final siempre se realiza directamente con el asesor Netlife Business, según el alcance, usuarios, módulos, volumen, integraciones y personalización.";
 
 export const inHouse = [
   {
