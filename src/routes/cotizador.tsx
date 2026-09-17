@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Info } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -136,13 +137,20 @@ ${priceDisclaimer}`;
 
         <div className="space-y-5">
           <Card className="border-primary/30 bg-primary/5 p-6">
-            <p className="text-xs tracking-widest text-primary uppercase">Rango estimado</p>
-            <p className="mt-3 text-sm text-muted-foreground">Mensual</p>
+            <div className="flex items-start gap-3 rounded-lg border border-primary/40 bg-primary/10 p-4">
+              <Info className="mt-0.5 size-5 shrink-0 text-primary" />
+              <p className="text-sm text-foreground">
+                <span className="font-semibold">Cotización final siempre con el asesor.</span>{" "}
+                Los valores de este cotizador son solo estimaciones referenciales; el precio real
+                se define directamente con tu asesor Netlife Business.
+              </p>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">Rango mensual estimado</p>
             <p className="font-display text-3xl font-semibold">
               {money(estimate.monthly)}{" "}
               <span className="text-lg text-muted-foreground">– {money(estimate.monthlyMax)}</span>
             </p>
-            <p className="mt-4 text-sm text-muted-foreground">Implementación (una vez)</p>
+            <p className="mt-4 text-sm text-muted-foreground">Implementación estimada (una vez)</p>
             <p className="font-display text-2xl font-semibold">
               {money(estimate.setup)}{" "}
               <span className="text-base text-muted-foreground">– {money(estimate.setupMax)}</span>
