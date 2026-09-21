@@ -1,6 +1,9 @@
 [build]
-  command = "bun run build"
+  command = "NITRO_PRESET=cloudflare-module bun run build"
   publish = "dist/client"
+
+[build.environment]
+  NITRO_PRESET = "cloudflare-module"
 
 [[redirects]]
   from = "/*"
