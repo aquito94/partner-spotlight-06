@@ -1,6 +1,6 @@
 [build]
   command = "NITRO_PRESET=cloudflare-module bun run build"
-  publish = "dist/client"
+  publish = ".output/public"
 
 [build.environment]
   NITRO_PRESET = "cloudflare-module"
