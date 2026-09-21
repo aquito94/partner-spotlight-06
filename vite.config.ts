@@ -33,6 +33,7 @@ export default defineConfig({
       enabled: true,
       // Solo pre-renderizamos las rutas listadas arriba (evita seguir enlaces a archivos como el PDF).
       autoStaticPathsDiscovery: false,
+      crawlLinks: false,
     },
   },
 });
