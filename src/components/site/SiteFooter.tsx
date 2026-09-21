@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 
-import guia from "@/assets/guia-comercial.pdf.asset.json";
-import netlifeLogo from "@/assets/netlife-business-logo.png.asset.json";
+import { mediaUrls } from "@/lib/media";
 import { trustBadges, trustStatement } from "@/data/portfolio";
 
 export function SiteFooter() {

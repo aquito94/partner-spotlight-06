@@ -49,7 +49,7 @@ function Guia() {
         problema: detecta → cuantifica → prioriza → construye con Netlife → mide → expande.
       </p>
       <Button asChild variant="outline" className="mt-6">
-        <a href={guia.url} target="_blank" rel="noreferrer">
+        <a href={mediaUrls.guiaPdf} target="_blank" rel="noreferrer">
           <Download className="mr-1 size-4" /> Descargar la guía en PDF
         </a>
       </Button>

@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-import netlifeLogo from "@/assets/netlife-business-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
+import { mediaUrls } from "@/lib/media";
 
 const nav = [
   { to: "/soluciones", label: "Soluciones" },
