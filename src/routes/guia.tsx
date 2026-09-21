@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Download, X } from "lucide-react";
 
-import guia from "@/assets/guia-comercial.pdf.asset.json";
+import { mediaUrls } from "@/lib/media";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {

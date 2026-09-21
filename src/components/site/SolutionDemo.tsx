@@ -1,17 +1,7 @@
-import agente from "@/assets/demo-agente-ia.mp4.asset.json";
-import automatizaciones from "@/assets/demo-automatizaciones.mp4.asset.json";
-import crm from "@/assets/demo-crm-cx.mp4.asset.json";
-import dashboards from "@/assets/demo-dashboards.mp4.asset.json";
-import gastro from "@/assets/demo-gastro.mp4.asset.json";
 import type { Solution } from "@/data/portfolio";
+import { mediaUrls } from "@/lib/media";
 
-const clips: Record<string, string> = {
-  "agente-ia": agente.url,
-  "crm-cx": crm.url,
-  dashboards: dashboards.url,
-  automatizaciones: automatizaciones.url,
-  gastro: gastro.url,
-};
+const clips = mediaUrls.demos;
 
 export function SolutionDemo({
   demo,
