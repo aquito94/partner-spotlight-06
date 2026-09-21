@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Download, X } from "lucide-react";
 
-import guia from "@/assets/guia-comercial.pdf.asset.json";
+import { mediaUrls } from "@/lib/media";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -49,7 +49,7 @@ function Guia() {
         problema: detecta → cuantifica → prioriza → construye con Netlife → mide → expande.
       </p>
       <Button asChild variant="outline" className="mt-6">
-        <a href={guia.url} target="_blank" rel="noreferrer">
+        <a href={mediaUrls.guiaPdf} target="_blank" rel="noreferrer">
           <Download className="mr-1 size-4" /> Descargar la guía en PDF
         </a>
       </Button>
