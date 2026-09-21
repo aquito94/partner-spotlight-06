@@ -20,7 +20,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <Link to="/" className="group flex items-center" onClick={() => setOpen(false)}>
           <img
-            src={netlifeLogo.url}
+            src={mediaUrls.logo}
             alt="Netlife Business"
             width={218}
             height={124}

@@ -10,7 +10,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <img
-            src={netlifeLogo.url}
+            src={mediaUrls.logo}
             alt="Netlife Business"
             width={218}
             height={124}
@@ -69,7 +69,7 @@ export function SiteFooter() {
             ))}
           </ul>
           <a
-            href={guia.url}
+            href={mediaUrls.guiaPdf}
             target="_blank"
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 text-sm text-primary hover:underline"
