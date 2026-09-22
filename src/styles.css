@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Netlife Business — Partners
- * Base oscura corporativa + acento cian/azul.
+ * Netlife Business — Enterprise portfolio
+ * Editorial claro + grafito corporativo + acento naranja Netlife.
  */
 
 @theme inline {
@@ -43,6 +43,10 @@
   --color-brand-soft: var(--brand-soft);
   --color-brand-foreground: var(--brand-foreground);
   --color-highlight: var(--highlight);
+  --color-enterprise: var(--enterprise);
+  --color-enterprise-foreground: var(--enterprise-foreground);
+  --color-enterprise-muted: var(--enterprise-muted);
+  --color-enterprise-line: var(--enterprise-line);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -58,6 +62,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
 }
 
 :root {
@@ -87,6 +92,10 @@
   --brand-soft: oklch(0.88 0.09 78);
   --brand-foreground: oklch(0.99 0.005 80);
   --highlight: oklch(0.79 0.15 82);
+  --enterprise: oklch(0.18 0.025 245);
+  --enterprise-foreground: oklch(0.97 0.006 80);
+  --enterprise-muted: oklch(0.74 0.018 235);
+  --enterprise-line: oklch(0.34 0.025 235);
   --chart-1: oklch(0.68 0.18 52);
   --chart-2: oklch(0.79 0.15 82);
   --chart-3: oklch(0.62 0.16 40);
@@ -119,7 +128,90 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@utility enterprise-panel {
+  border: 1px solid var(--enterprise-line);
+  background: var(--enterprise);
+  color: var(--enterprise-foreground);
+  box-shadow: 0 24px 70px -32px color-mix(in oklab, var(--enterprise) 64%, transparent);
+}
+
+@utility shadow-premium {
+  box-shadow: 0 24px 70px -42px color-mix(in oklab, var(--foreground) 28%, transparent);
+}
+
+@utility enterprise-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 36px 36px;
+}
+
+@utility enterprise-paper-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 48%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 48%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+@utility data-line {
+  background: linear-gradient(to bottom, var(--primary), var(--enterprise-line));
+  animation: data-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes data-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -140,8 +232,16 @@
 
 @utility line-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 60%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 60%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 64px 64px;
 }
 
