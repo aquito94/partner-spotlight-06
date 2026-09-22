@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 
 import { mediaUrls } from "@/lib/media";
-import { trustBadges, trustStatement } from "@/data/portfolio";
+import { trustStatement } from "@/data/portfolio";
+
+const verifiedBadges = ["ISO/IEC 27001 (AENOR)", "PCI DSS Verified"];
 
 export function SiteFooter() {
   return (
@@ -59,7 +61,7 @@ export function SiteFooter() {
             Seguridad y respaldo
           </p>
           <ul className="mt-4 flex flex-wrap gap-2">
-            {trustBadges.map((badge) => (
+            {verifiedBadges.map((badge) => (
               <li
                 key={badge}
                 className="rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-3 py-1 text-xs text-primary-foreground/65"

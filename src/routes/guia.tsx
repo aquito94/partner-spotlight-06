@@ -227,7 +227,7 @@ function Guia() {
 
       <div className="mt-14 flex flex-wrap gap-3">
         <Button asChild>
-          <Link to="/oportunidad">Registrar oportunidad</Link>
+          <Link to="/oportunidad">Preparar brief consultivo</Link>
         </Button>
         <Button asChild variant="outline">
           <Link to="/diagnostico">Hacer el diagnóstico</Link>

@@ -28,7 +28,7 @@ export const Route = createFileRoute("/diagnostico")({
       { property: "og:title", content: "Diagnóstico guiado · Netlife Business" },
       {
         property: "og:description",
-        content: "De los síntomas del cliente a una recomendación priorizada de soluciones.",
+        content: "Del problema y su impacto a una arquitectura priorizada de capacidades.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
