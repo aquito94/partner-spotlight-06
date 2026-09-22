@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { mediaUrls } from "@/lib/media";
 
 const nav = [
-  { to: "/soluciones", label: "Soluciones" },
+  { to: "/soluciones", label: "Portafolio" },
   { to: "/diagnostico", label: "Diagnóstico" },
   { to: "/cotizador", label: "Cotizador" },
   { to: "/guia", label: "Guía del aliado" },
@@ -43,7 +43,7 @@ export function SiteHeader() {
 
         <div className="hidden md:block">
           <Button asChild size="sm">
-            <Link to="/oportunidad">Registrar oportunidad</Link>
+            <Link to="/oportunidad">Hablar con un consultor</Link>
           </Button>
         </div>
 
@@ -60,7 +60,7 @@ export function SiteHeader() {
       {open && (
         <div className="border-t border-border/70 px-5 pb-5 md:hidden">
           <nav className="flex flex-col gap-1 pt-3">
-            {[...nav, { to: "/oportunidad", label: "Registrar oportunidad" } as const].map(
+            {[...nav, { to: "/oportunidad", label: "Hablar con un consultor" } as const].map(
               (item) => (
                 <Link
                   key={item.to}

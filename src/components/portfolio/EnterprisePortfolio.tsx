@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Check, LockKeyhole, ShieldCheck } from "lucide-react";
+import type { ReactNode } from "react";
 
 import enterpriseOperations from "@/assets/netlife-enterprise-operations.jpg";
 import { ArchitectureStack, ConnectionMap } from "@/components/portfolio/ConnectionMap";
@@ -93,5 +94,5 @@ export function EnterprisePortfolio() {
 }
 
 function Header({ eyebrow, title, intro, dark = false }: { eyebrow: string; title: string; intro?: string; dark?: boolean }) { return <div className="max-w-3xl"><p className="eyebrow">{eyebrow}</p><h2 className={`mt-4 text-4xl leading-tight sm:text-5xl ${dark ? "text-enterprise-foreground" : ""}`}>{title}</h2>{intro && <p className={`mt-5 max-w-2xl text-base leading-relaxed ${dark ? "text-enterprise-muted" : "text-muted-foreground"}`}>{intro}</p>}</div>; }
-function Section({ id, eyebrow, title, intro, children }: { id: string; eyebrow: string; title: string; intro: string; children: React.ReactNode }) { return <section id={id} className="scroll-mt-32 py-20 sm:py-28"><div className="mx-auto max-w-7xl px-5"><Header eyebrow={eyebrow} title={title} intro={intro} />{children}</div></section>; }
+function Section({ id, eyebrow, title, intro, children }: { id: string; eyebrow: string; title: string; intro: string; children: ReactNode }) { return <section id={id} className="scroll-mt-32 py-20 sm:py-28"><div className="mx-auto max-w-7xl px-5"><Header eyebrow={eyebrow} title={title} intro={intro} />{children}</div></section>; }
 function StatePanel({ title, items, after = false }: { title: string; items: string[]; after?: boolean }) { return <div className={`border p-7 ${after ? "border-primary/40 bg-card shadow-premium" : "border-border bg-background"}`}><p className={`text-xs font-semibold uppercase tracking-[0.2em] ${after ? "text-primary" : "text-muted-foreground"}`}>{title}</p><div className="mt-6 grid grid-cols-2 gap-3">{items.map((item) => <span key={item} className="text-sm">{item}</span>)}</div></div>; }
