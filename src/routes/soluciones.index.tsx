@@ -11,10 +11,14 @@ export const Route = createFileRoute("/soluciones/")({
         content:
           "Diagnosticamos procesos empresariales y conectamos IA, automatización, datos, canales e integraciones para generar resultados medibles.",
       },
-      { property: "og:title", content: "Transformamos problemas en sistemas inteligentes · Netlife Business" },
+      {
+        property: "og:title",
+        content: "Transformamos problemas en sistemas inteligentes · Netlife Business",
+      },
       {
         property: "og:description",
-        content: "Arquitectura tecnológica integral para ventas, servicio, operaciones y decisiones.",
+        content:
+          "Arquitectura tecnológica integral para ventas, servicio, operaciones y decisiones.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

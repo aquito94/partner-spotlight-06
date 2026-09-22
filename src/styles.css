@@ -171,15 +171,31 @@
 
 @utility enterprise-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--enterprise-line) 65%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 36px 36px;
 }
 
 @utility enterprise-paper-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--border) 48%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--border) 48%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 48%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 48%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black, transparent 88%);
 }
@@ -190,8 +206,13 @@
 }
 
 @keyframes data-pulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @utility grid-backdrop {
@@ -211,8 +232,16 @@
 
 @utility line-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 60%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 60%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 64px 64px;
 }
 
