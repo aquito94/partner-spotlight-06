@@ -34,6 +34,8 @@ export const Route = createFileRoute("/guia")({
         property: "og:description",
         content: "Cómo detectar, construir y escalar oportunidades con Netlife Business.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Guia,
@@ -225,7 +227,7 @@ function Guia() {
 
       <div className="mt-14 flex flex-wrap gap-3">
         <Button asChild>
-          <Link to="/oportunidad">Registrar oportunidad</Link>
+          <Link to="/oportunidad">Preparar brief consultivo</Link>
         </Button>
         <Button asChild variant="outline">
           <Link to="/diagnostico">Hacer el diagnóstico</Link>

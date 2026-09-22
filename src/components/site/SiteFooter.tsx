@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { Download } from "lucide-react";
 
 import { mediaUrls } from "@/lib/media";
-import { trustBadges, trustStatement } from "@/data/portfolio";
+import { trustStatement } from "@/data/portfolio";
+
+const verifiedBadges = ["ISO/IEC 27001 (AENOR)", "PCI DSS Verified"];
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border/70 bg-surface/60">
+    <footer className="border-t border-border/70 bg-ink text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <img
@@ -17,52 +19,52 @@ export function SiteFooter() {
             loading="lazy"
             className="mb-3 h-16 w-auto object-contain"
           />
-          <p className="text-sm text-muted-foreground">Soluciones digitales · IA · desarrollos In-House</p>
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">{trustStatement}</p>
+          <p className="text-sm text-primary-foreground/70">Estrategia · IA · automatización · datos · desarrollo a medida</p>
+          <p className="mt-4 max-w-sm text-sm text-primary-foreground/60">{trustStatement}</p>
         </div>
 
         <div>
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+          <p className="text-xs font-semibold tracking-widest text-primary-foreground/50 uppercase">
             Explorar
           </p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link to="/soluciones" className="text-muted-foreground hover:text-foreground">
-                Portafolio de soluciones
+              <Link to="/soluciones" className="text-primary-foreground/70 hover:text-primary-foreground">
+                Capacidades empresariales
               </Link>
             </li>
             <li>
-              <Link to="/diagnostico" className="text-muted-foreground hover:text-foreground">
-                Diagnóstico guiado
+              <Link to="/diagnostico" className="text-primary-foreground/70 hover:text-primary-foreground">
+                Diagnosticar una oportunidad
               </Link>
             </li>
             <li>
-              <Link to="/cotizador" className="text-muted-foreground hover:text-foreground">
-                Cotizador referencial
+              <Link to="/cotizador" className="text-primary-foreground/70 hover:text-primary-foreground">
+                Inversión referencial
               </Link>
             </li>
             <li>
-              <Link to="/guia" className="text-muted-foreground hover:text-foreground">
+              <Link to="/guia" className="text-primary-foreground/70 hover:text-primary-foreground">
                 Guía del aliado
               </Link>
             </li>
             <li>
-              <Link to="/oportunidad" className="text-muted-foreground hover:text-foreground">
-                Registrar oportunidad
+              <Link to="/oportunidad" className="text-primary-foreground/70 hover:text-primary-foreground">
+                Hablar con un consultor
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-            Respaldo
+          <p className="text-xs font-semibold tracking-widest text-primary-foreground/50 uppercase">
+            Seguridad y respaldo
           </p>
           <ul className="mt-4 flex flex-wrap gap-2">
-            {trustBadges.map((badge) => (
+            {verifiedBadges.map((badge) => (
               <li
                 key={badge}
-                className="rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs text-muted-foreground"
+                className="rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-3 py-1 text-xs text-primary-foreground/65"
               >
                 {badge}
               </li>
@@ -72,14 +74,14 @@ export function SiteFooter() {
             href={mediaUrls.guiaPdf}
             target="_blank"
             rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            className="mt-5 inline-flex items-center gap-2 text-sm text-cyan hover:underline"
           >
             <Download className="size-4" /> Descargar guía comercial 2026 (PDF)
           </a>
         </div>
       </div>
-      <div className="border-t border-border/70 px-5 py-5 text-center text-xs text-muted-foreground">
-        Guía comercial para partners · Edición 2026 · Netlife Business
+      <div className="border-t border-primary-foreground/10 px-5 py-5 text-center text-xs text-primary-foreground/50">
+        Arquitecturas empresariales diseñadas desde el problema · Netlife Business 2026
       </div>
     </footer>
   );

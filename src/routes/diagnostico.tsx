@@ -14,6 +14,7 @@ import {
   symptoms,
   type Sector,
 } from "@/data/portfolio";
+import { getCapabilityName } from "@/data/enterprise";
 
 export const Route = createFileRoute("/diagnostico")({
   head: () => ({
@@ -27,8 +28,10 @@ export const Route = createFileRoute("/diagnostico")({
       { property: "og:title", content: "Diagnóstico guiado · Netlife Business" },
       {
         property: "og:description",
-        content: "De los síntomas del cliente a una recomendación priorizada de soluciones.",
+        content: "Del problema y su impacto a una arquitectura priorizada de capacidades.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Diagnostico,
@@ -52,10 +55,12 @@ function Diagnostico() {
     });
     return [...scores.entries()]
       .map(([slug, score]) => {
-        const solution = solutions.find((s) => s.slug === slug)!;
+        const solution = solutions.find((s) => s.slug === slug);
+        if (!solution) return undefined;
         const sectorFit = sector && solution.sectors.includes(sector) ? 1 : 0;
         return { solution, score: score + sectorFit };
       })
+      .filter((item): item is { solution: (typeof solutions)[number]; score: number } => Boolean(item))
       .sort((a, b) => b.score - a.score)
       .slice(0, 4);
   }, [selected, sector]);
@@ -70,11 +75,11 @@ function Diagnostico() {
     <div className="mx-auto max-w-5xl px-5 py-14">
       <p className="text-xs tracking-widest text-primary uppercase">Detectar oportunidades</p>
       <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">
-        Escucha síntomas, no palabras tecnológicas
+        Identifica qué problema vale la pena resolver
       </h1>
       <p className="mt-3 text-muted-foreground">
-        Cuando el cliente describe fricción, ya hay una hipótesis de oportunidad. Marca lo que estás
-        escuchando.
+        Selecciona las señales operativas. Construiremos una hipótesis de impacto, capacidades
+        combinadas y métricas para validar en el diagnóstico.
       </p>
 
       <Card className="mt-8 border-border/70 bg-surface/70 p-6">
@@ -135,7 +140,7 @@ function Diagnostico() {
       {submitted && ranking.length > 0 && (
         <div className="mt-10 space-y-8">
           <section>
-            <h2 className="text-2xl font-semibold">Soluciones recomendadas</h2>
+            <h2 className="text-3xl font-normal">Arquitectura de capacidades recomendada</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Priorizadas según los síntomas marcados{sector ? ` y el sector ${sector}` : ""}.
             </p>
@@ -148,7 +153,7 @@ function Diagnostico() {
                     </span>
                     <span className="text-xs text-muted-foreground">{solution.entryPrice}</span>
                   </div>
-                  <p className="mt-3 font-display text-xl font-semibold">{solution.name}</p>
+                  <p className="mt-3 font-display text-2xl font-semibold">{getCapabilityName(solution.slug, solution.name)}</p>
                   <p className="mt-1 text-sm text-primary">{solution.tagline}</p>
                   <p className="mt-3 text-sm text-muted-foreground">{solution.sellsAs}</p>
                   <Link
@@ -156,7 +161,7 @@ function Diagnostico() {
                     params={{ slug: solution.slug }}
                     className="mt-4 inline-flex items-center gap-1 text-sm text-primary hover:underline"
                   >
-                    Ver detalle y demo <ArrowRight className="size-4" />
+                    Explorar capacidad <ArrowRight className="size-4" />
                   </Link>
                 </Card>
               ))}
@@ -199,7 +204,7 @@ function Diagnostico() {
 
           <div className="flex flex-wrap gap-3">
             <Button asChild>
-              <Link to="/oportunidad">Registrar esta oportunidad</Link>
+              <Link to="/oportunidad">Preparar brief consultivo</Link>
             </Button>
             <Button asChild variant="outline">
               <Link to="/cotizador">Estimar inversión</Link>

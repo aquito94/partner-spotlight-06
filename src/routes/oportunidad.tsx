@@ -9,21 +9,24 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { escalationMinimum, sectors, solutions } from "@/data/portfolio";
+import { getCapabilityName } from "@/data/enterprise";
 
 export const Route = createFileRoute("/oportunidad")({
   head: () => ({
     meta: [
-      { title: "Registrar oportunidad · Netlife Business" },
+      { title: "Brief consultivo · Netlife Business" },
       {
         name: "description",
         content:
-          "Arma el registro de la oportunidad con problema, proceso actual, volumen, usuarios, sistemas, resultado esperado y fecha objetivo.",
+          "Prepara un brief del proceso, impacto, volumen, sistemas y resultado esperado para conversar con un consultor Netlife Business.",
       },
-      { property: "og:title", content: "Registrar oportunidad · Netlife Business" },
+      { property: "og:title", content: "Brief consultivo · Netlife Business" },
       {
         property: "og:description",
         content: "Un buen registro acelera preventa, validación y propuesta.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Oportunidad,
@@ -60,12 +63,15 @@ function Oportunidad() {
   const summary = useMemo(
     () =>
       [
-        "REGISTRO DE OPORTUNIDAD · NETLIFE BUSINESS",
+        "BRIEF DE OPORTUNIDAD · NETLIFE BUSINESS",
         `Empresa: ${form.empresa}`,
         `Sector: ${form.sector}`,
         `Contacto: ${form.contacto} · ${form.email} · ${form.telefono}`,
-        `Soluciones de interés: ${interes
-          .map((i) => solutions.find((s) => s.slug === i)?.name)
+        `Capacidades consideradas: ${interes
+          .map((i) => {
+            const solution = solutions.find((s) => s.slug === i);
+            return solution ? getCapabilityName(solution.slug, solution.name) : undefined;
+          })
           .filter(Boolean)
           .join(", ")}`,
         "",
@@ -98,13 +104,13 @@ function Oportunidad() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-14">
-      <p className="text-xs tracking-widest text-primary uppercase">Flujo de oportunidad</p>
-      <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">
-        La oportunidad debe llegar con contexto
+      <p className="text-xs tracking-widest text-primary uppercase">Conversación consultiva</p>
+      <h1 className="mt-3 text-4xl font-normal sm:text-5xl">
+        Cuéntanos qué proceso quieres mejorar
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Un buen registro acelera preventa, validación y propuesta. Completa la información y
-        obtén un resumen listo para enviar. Nada se almacena en línea.
+        Organizamos el problema, el proceso actual, el impacto y el resultado esperado para diseñar
+        una conversación útil con un consultor. Nada se almacena en línea.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -199,7 +205,7 @@ function Oportunidad() {
 
           <div className="mt-6">
             <Label className="text-xs tracking-widest text-muted-foreground uppercase">
-              Soluciones de interés
+              Capacidades que podrían intervenir
             </Label>
             <div className="mt-2 flex flex-wrap gap-2">
               {solutions.map((s) => (
@@ -213,7 +219,7 @@ function Oportunidad() {
                       : "border-border bg-secondary/40 text-muted-foreground"
                   }`}
                 >
-                  {s.name}
+                  {getCapabilityName(s.slug, s.name)}
                 </button>
               ))}
             </div>
@@ -230,13 +236,13 @@ function Oportunidad() {
               toast.success("Resumen generado. Cópialo o descárgalo.");
             }}
           >
-            Generar resumen
+            Generar brief
           </Button>
         </Card>
 
         <Card className="h-fit border-border/70 bg-surface/70 p-6">
           <p className="text-xs tracking-widest text-muted-foreground uppercase">
-            Resumen de la oportunidad
+            Brief de la oportunidad
           </p>
           {done ? (
             <>
