@@ -33,8 +33,8 @@ const after = ["Canales conectados", "Datos centralizados", "IA y automatizació
 
 function Home() {
   const [objective, setObjective] = useState(businessObjectives[0]);
-  const [area, setArea] = useState(businessAreas[0]);
-  const [industry, setIndustry] = useState(industries[0]);
+  const [area, setArea] = useState<(typeof businessAreas)[number]>(businessAreas[0]);
+  const [industry, setIndustry] = useState<(typeof industries)[number]>(industries[0]);
 
   return (
     <div className="overflow-hidden">

@@ -20,7 +20,7 @@ export type BusinessObjective = {
   metrics: string[];
 };
 
-export const businessObjectives: BusinessObjective[] = [
+export const businessObjectives = [
   { id: "ingresos", label: "Aumentar ingresos", signal: "Oportunidades que no avanzan o clientes que abandonan antes de comprar.", processes: ["Captura y calificación de leads", "Seguimiento comercial", "Venta cruzada y recuperación"], metrics: ["Conversión", "Ingresos", "LTV"] },
   { id: "costos", label: "Reducir costos operativos", signal: "Horas de equipo consumidas por tareas repetitivas y controles manuales.", processes: ["Digitación y validación", "Aprobaciones", "Conciliación y reportes"], metrics: ["Costo por operación", "Horas ahorradas", "Productividad"] },
   { id: "velocidad", label: "Responder más rápido", signal: "Solicitudes que esperan por disponibilidad, traspasos o búsqueda de información.", processes: ["Atención omnicanal", "Clasificación y asignación", "Resolución y escalamiento"], metrics: ["Tiempo de respuesta", "FCR", "SLA"] },
@@ -32,7 +32,7 @@ export const businessObjectives: BusinessObjective[] = [
   { id: "escala", label: "Escalar sin aumentar proporcionalmente el equipo", signal: "El volumen crece más rápido que la capacidad de atención u operación.", processes: ["Autoservicio inteligente", "Priorización", "Automatización de tareas"], metrics: ["Volumen por persona", "Costo unitario", "Capacidad"] },
   { id: "conectar", label: "Conectar mis sistemas", signal: "Cada área opera con una versión diferente del cliente, pedido o inventario.", processes: ["ERP y CRM", "E-commerce y pagos", "APIs y bases de datos"], metrics: ["Errores de sincronización", "Tiempo de ciclo", "Trazabilidad"] },
   { id: "iniciar-ia", label: "Implementar IA y definir por dónde empezar", signal: "Existen ideas, pero no un caso de negocio priorizado ni una línea base.", processes: ["Diagnóstico de oportunidades", "Priorización por impacto", "Piloto medible"], metrics: ["Viabilidad", "Adopción", "Retorno"] },
-];
+] satisfies [BusinessObjective, ...BusinessObjective[]];
 
 export type EnterpriseCapability = {
   id: string;
