@@ -3,4 +3,4 @@
 - [x] Crear contenido consultivo por objetivos, capacidades, áreas e industrias.
 - [x] Construir la nueva experiencia interactiva de Soluciones.
 - [x] Actualizar navegación, tipografía y sistema visual.
-- [ ] Validar interacción, adaptación móvil y publicación estática.
+- [x] Validar interacción, adaptación móvil y publicación estática.

@@ -16,6 +16,8 @@ export const Route = createFileRoute("/soluciones/")({
         property: "og:description",
         content: "Arquitectura tecnológica integral para ventas, servicio, operaciones y decisiones.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: EnterprisePortfolio,
