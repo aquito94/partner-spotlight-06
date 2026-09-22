@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Check, ChevronRight, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
+import executiveOperationsImage from "@/assets/netlife-executive-operations.jpg";
 import { Button } from "@/components/ui/button";
 import {
   architectureLayers,
@@ -58,6 +59,38 @@ function Home() {
             </div>
           </div>
           <EnterpriseFlow />
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-foreground text-background">
+        <div className="mx-auto grid max-w-[90rem] lg:grid-cols-[1.08fr_0.92fr]">
+          <figure className="relative min-h-[22rem] overflow-hidden lg:min-h-[34rem]">
+            <img
+              src={executiveOperationsImage}
+              alt="Equipo ejecutivo analizando indicadores operativos y recorridos de clientes"
+              width={1600}
+              height={900}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-foreground/15" aria-hidden="true" />
+          </figure>
+          <div className="flex flex-col justify-center px-6 py-14 sm:px-10 lg:px-16">
+            <p className="text-xs font-semibold tracking-[0.18em] text-cyan uppercase">Visión integral de la operación</p>
+            <h2 className="mt-5 font-display text-4xl leading-[1.05] text-background sm:text-5xl">
+              Una decisión tecnológica comienza con una lectura precisa del negocio.
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-background/70">
+              Conectamos procesos, experiencia del cliente, datos y sistemas para revelar dónde existe fricción y qué arquitectura puede producir un resultado medible.
+            </p>
+            <div className="mt-9 grid grid-cols-3 gap-4 border-t border-background/20 pt-6">
+              {[["01", "Diagnóstico"], ["02", "Arquitectura"], ["03", "Medición"]].map(([number, label]) => (
+                <div key={number}>
+                  <span className="font-mono text-xs text-cyan">{number}</span>
+                  <p className="mt-2 text-sm text-background/80">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
