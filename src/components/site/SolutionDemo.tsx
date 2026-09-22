@@ -17,7 +17,7 @@ export function SolutionDemo({
   if (!src) {
     return (
       <div
-        className={`relative aspect-video overflow-hidden rounded-xl border border-border bg-surface-strong ${className}`}
+        className={`relative aspect-video overflow-hidden rounded-lg border border-border bg-surface-strong ${className}`}
       >
         <div className="absolute inset-0 line-grid opacity-40" />
         <div className="absolute inset-0 grid-backdrop" />
@@ -32,7 +32,7 @@ export function SolutionDemo({
 
   return (
     <div
-      className={`relative aspect-video overflow-hidden rounded-xl border border-border bg-surface-strong ${className}`}
+      className={`relative aspect-video overflow-hidden rounded-lg border border-border bg-surface-strong ${className}`}
     >
       <video
         src={src}

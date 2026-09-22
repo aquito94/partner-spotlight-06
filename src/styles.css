@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Netlife Business — Partners
- * Base oscura corporativa + acento cian/azul.
+ * Netlife Business — Enterprise portfolio
+ * Arquitectura editorial clara con azul, turquesa y firma naranja.
  */
 
 @theme inline {
@@ -43,6 +43,10 @@
   --color-brand-soft: var(--brand-soft);
   --color-brand-foreground: var(--brand-foreground);
   --color-highlight: var(--highlight);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-cyan: var(--cyan);
+  --color-brand-warm: var(--brand-warm);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -56,50 +60,54 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.99 0.004 80);
-  --foreground: oklch(0.24 0.02 265);
+  --radius: 0.5rem;
+  --background: oklch(0.985 0.004 245);
+  --foreground: oklch(0.19 0.035 252);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.02 265);
+  --card-foreground: oklch(0.19 0.035 252);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.02 265);
-  --primary: oklch(0.68 0.18 52);
-  --primary-foreground: oklch(0.99 0.005 80);
-  --secondary: oklch(0.965 0.014 75);
-  --secondary-foreground: oklch(0.3 0.03 60);
-  --muted: oklch(0.965 0.008 80);
-  --muted-foreground: oklch(0.5 0.02 265);
-  --accent: oklch(0.95 0.03 75);
-  --accent-foreground: oklch(0.32 0.05 55);
+  --popover-foreground: oklch(0.19 0.035 252);
+  --primary: oklch(0.47 0.14 246);
+  --primary-foreground: oklch(0.99 0.004 245);
+  --secondary: oklch(0.955 0.015 235);
+  --secondary-foreground: oklch(0.25 0.055 246);
+  --muted: oklch(0.96 0.008 245);
+  --muted-foreground: oklch(0.48 0.025 250);
+  --accent: oklch(0.92 0.045 205);
+  --accent-foreground: oklch(0.27 0.07 225);
   --destructive: oklch(0.58 0.2 25);
   --destructive-foreground: oklch(0.99 0.005 80);
-  --border: oklch(0.91 0.008 80);
-  --input: oklch(0.9 0.01 80);
-  --ring: oklch(0.68 0.18 52);
-  --surface: oklch(0.985 0.008 80);
-  --surface-strong: oklch(0.96 0.014 78);
-  --brand: oklch(0.68 0.18 52);
-  --brand-soft: oklch(0.88 0.09 78);
-  --brand-foreground: oklch(0.99 0.005 80);
-  --highlight: oklch(0.79 0.15 82);
-  --chart-1: oklch(0.68 0.18 52);
-  --chart-2: oklch(0.79 0.15 82);
-  --chart-3: oklch(0.62 0.16 40);
-  --chart-4: oklch(0.85 0.12 95);
-  --chart-5: oklch(0.55 0.14 28);
-  --sidebar: oklch(0.985 0.008 80);
-  --sidebar-foreground: oklch(0.24 0.02 265);
-  --sidebar-primary: oklch(0.68 0.18 52);
-  --sidebar-primary-foreground: oklch(0.99 0.005 80);
-  --sidebar-accent: oklch(0.96 0.014 78);
-  --sidebar-accent-foreground: oklch(0.32 0.05 55);
-  --sidebar-border: oklch(0.91 0.008 80);
-  --sidebar-ring: oklch(0.68 0.18 52);
+  --border: oklch(0.9 0.012 245);
+  --input: oklch(0.89 0.014 245);
+  --ring: oklch(0.61 0.14 220);
+  --surface: oklch(0.97 0.008 245);
+  --surface-strong: oklch(0.935 0.018 240);
+  --brand: oklch(0.47 0.14 246);
+  --brand-soft: oklch(0.88 0.07 216);
+  --brand-foreground: oklch(0.99 0.004 245);
+  --highlight: oklch(0.72 0.13 196);
+  --cyan: oklch(0.72 0.13 196);
+  --ink: oklch(0.18 0.035 252);
+  --ink-soft: oklch(0.25 0.04 248);
+  --brand-warm: oklch(0.68 0.18 52);
+  --chart-1: oklch(0.47 0.14 246);
+  --chart-2: oklch(0.72 0.13 196);
+  --chart-3: oklch(0.68 0.18 52);
+  --chart-4: oklch(0.58 0.1 226);
+  --chart-5: oklch(0.37 0.08 250);
+  --sidebar: oklch(0.985 0.004 245);
+  --sidebar-foreground: oklch(0.19 0.035 252);
+  --sidebar-primary: oklch(0.47 0.14 246);
+  --sidebar-primary-foreground: oklch(0.99 0.004 245);
+  --sidebar-accent: oklch(0.955 0.015 235);
+  --sidebar-accent-foreground: oklch(0.25 0.055 246);
+  --sidebar-border: oklch(0.9 0.012 245);
+  --sidebar-ring: oklch(0.61 0.14 220);
 }
 
 @layer base {
@@ -119,23 +127,20 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection {
+    background: color-mix(in oklab, var(--cyan) 28%, transparent);
   }
 }
 
 @utility grid-backdrop {
   background-image:
-    radial-gradient(
-      circle at 18% -10%,
-      color-mix(in oklab, var(--brand) 14%, transparent),
-      transparent 58%
-    ),
-    radial-gradient(
-      circle at 88% 0%,
-      color-mix(in oklab, var(--highlight) 16%, transparent),
-      transparent 52%
-    ),
-    linear-gradient(to bottom, var(--surface), var(--background) 72%);
+    linear-gradient(115deg, color-mix(in oklab, var(--brand) 7%, transparent), transparent 48%),
+    linear-gradient(to bottom, var(--card), var(--background) 78%);
 }
 
 @utility line-grid {
@@ -146,7 +151,29 @@
 }
 
 @utility text-gradient-brand {
-  background-image: linear-gradient(100deg, var(--brand), var(--highlight));
+  background-image: linear-gradient(100deg, var(--brand), var(--cyan));
   background-clip: text;
   color: transparent;
+}
+
+@utility enterprise-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--border) 52%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 52%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@utility signal-line {
+  background-image: linear-gradient(90deg, transparent, var(--cyan), var(--primary), transparent);
+  background-size: 220% 100%;
+  animation: signal-flow 4s linear infinite;
+}
+
+@keyframes signal-flow {
+  to { background-position: -220% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .signal-line { animation: none; }
 }
