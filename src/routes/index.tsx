@@ -40,7 +40,7 @@ function Home() {
     <div className="overflow-hidden">
       <section className="relative border-b border-border bg-card">
         <div className="absolute inset-0 enterprise-grid opacity-45" />
-        <div className="relative mx-auto grid min-h-[calc(100svh-69px)] max-w-[90rem] items-center gap-14 px-5 py-16 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-20">
+        <div className="relative mx-auto grid max-w-[90rem] items-center gap-14 px-5 py-16 lg:min-h-[46rem] lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Arquitectura empresarial orientada a resultados</p>
             <h1 className="mt-6 text-5xl leading-[0.98] font-normal text-balance sm:text-6xl lg:text-7xl">
@@ -115,7 +115,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5">
           <SectionHeading eyebrow="Escenarios de aplicación" title="La industria cambia. El método permanece." text="Entendemos el flujo operativo antes de definir la combinación tecnológica." />
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">{industries.map((item) => <button type="button" key={item.name} onClick={() => setIndustry(item)} className={`rounded-md border p Garden text-left text-sm transition-colors ${industry.name === item.name ? "border-primary bg-secondary text-primary" : "border-border bg-background hover:border-primary/50"}`.replace(" Garden", " p-4")}>{item.name}</button>)}</div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">{industries.map((item) => <button type="button" key={item.name} onClick={() => setIndustry(item)} className={`rounded-md border p-4 text-left text-sm transition-colors ${industry.name === item.name ? "border-primary bg-secondary text-primary" : "border-border bg-background hover:border-primary/50"}`}>{item.name}</button>)}</div>
             <div className="rounded-lg border border-border bg-background p-8 sm:p-10"><p className="text-xs text-primary uppercase">{industry.name}</p><h3 className="mt-3 text-3xl">Procesos donde suele existir valor por recuperar.</h3><div className="mt-8 space-y-3">{industry.processes.map((process, index) => <div key={process} className="flex items-center gap-4 border-b border-border pb-3"><span className="text-xs text-muted-foreground">0{index + 1}</span><span>{process}</span></div>)}</div><p className="mt-8 text-xs text-muted-foreground">Escenario representativo. La arquitectura y los resultados se definen después del diagnóstico.</p></div>
           </div>
         </div>

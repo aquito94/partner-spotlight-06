@@ -6,4 +6,4 @@
 - [x] Replantear capacidades y detalles sin catálogo de productos.
 - [x] Alinear diagnóstico, inversión, guía y brief de oportunidad.
 - [x] Revisar metadatos de todas las páginas.
-- [ ] Validar interacción, móvil, escritorio, rutas y publicación estática.
+- [x] Validar interacción, móvil, escritorio, rutas y publicación estática.
