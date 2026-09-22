@@ -14,21 +14,24 @@ import {
   type ProblemTag,
   type Sector,
 } from "@/data/portfolio";
+import { getCapabilityName } from "@/data/enterprise";
 
 export const Route = createFileRoute("/soluciones/")({
   head: () => ({
     meta: [
-      { title: "Portafolio de soluciones · Netlife Business" },
+      { title: "Capacidades empresariales · Netlife Business" },
       {
         name: "description",
         content:
-          "Nueve soluciones: Agente IA, CRM/CX, Power Inbox AI, dashboards, integraciones, automatizaciones, adopción de IA, Gastro.ec y cámaras. Filtra por sector, problema y precio.",
+          "Explora capacidades de inteligencia, automatización, datos, omnicanalidad, integraciones y desarrollo conectadas a resultados empresariales.",
       },
-      { property: "og:title", content: "Portafolio de soluciones · Netlife Business" },
+      { property: "og:title", content: "Capacidades empresariales · Netlife Business" },
       {
         property: "og:description",
-        content: "Filtra las soluciones por sector, tipo de problema y precio de entrada.",
+        content: "Encuentra la combinación de capacidades adecuada según el problema, el sector y el proceso.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: SolutionsIndex,
@@ -52,13 +55,13 @@ function SolutionsIndex() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-14">
-      <p className="text-xs tracking-widest text-primary uppercase">Portafolio base</p>
+      <p className="text-xs tracking-widest text-primary uppercase">Mapa de capacidades</p>
       <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">
-        Puertas de entrada para abrir conversaciones
+        Una capacidad aislada no resuelve un proceso complejo
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        La solución se elige después del problema. Filtra por sector, tipo de fricción y presupuesto
-        aproximado.
+        Explora los frentes tecnológicos desde el problema operativo. Una arquitectura empresarial
+        puede combinar varias capacidades según el alcance.
       </p>
 
       <Card className="mt-8 border-border/70 bg-surface/70 p-6">
@@ -127,13 +130,13 @@ function SolutionsIndex() {
             <SolutionDemo demo={s.demo} name={s.name} className="rounded-none border-0" />
             <div className="flex flex-1 flex-col p-6">
               <p className="text-xs tracking-widest text-muted-foreground">{s.code}</p>
-              <p className="mt-1 font-display text-xl font-semibold">{s.name}</p>
+              <p className="mt-1 font-display text-2xl font-semibold">{getCapabilityName(s.slug, s.name)}</p>
               <p className="text-sm text-primary">{s.tagline}</p>
               <p className="mt-3 flex-1 text-sm text-muted-foreground">{s.pitch}</p>
               <p className="mt-4 text-sm">{s.entryPrice}</p>
               <Button asChild variant="outline" className="mt-4 w-full">
                 <Link to="/soluciones/$slug" params={{ slug: s.slug }}>
-                  Ver detalle <ArrowRight className="ml-1 size-4" />
+                  Explorar capacidad <ArrowRight className="ml-1 size-4" />
                 </Link>
               </Button>
             </div>

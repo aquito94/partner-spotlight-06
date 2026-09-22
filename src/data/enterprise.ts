@@ -112,3 +112,18 @@ export const architectureLayers = [
 export const securityPillars = ["Seguridad", "Protección de datos", "Control de accesos", "Integraciones seguras", "Trazabilidad", "Gobierno de información", "Arquitectura empresarial", "Cumplimiento"] as const;
 
 export const outcomeKpis = ["Ingresos", "Conversión", "Tiempo", "Costo por operación", "Productividad", "Tiempo de respuesta", "Abandono", "Retención", "FCR", "SLA", "Cobranza", "Errores", "Horas ahorradas", "CAC", "LTV", "NPS", "CSAT"] as const;
+
+export const solutionCapabilityNames: Record<string, string> = {
+  "agente-ia": "Inteligencia conversacional",
+  "crm-cx": "Operación comercial y experiencia conectada",
+  "power-inbox-ai": "Plataforma omnicanal inteligente",
+  dashboards: "Inteligencia de datos y decisiones",
+  integraciones: "Integraciones y ecosistemas conectados",
+  automatizaciones: "Orquestación y automatización de procesos",
+  "adopcion-ia": "IA para productividad corporativa",
+  "gastro-ec": "Operaciones inteligentes para HORECA",
+  camaras: "Computer Vision y operaciones inteligentes",
+};
+
+export const getCapabilityName = (slug: string, fallback: string) =>
+  solutionCapabilityNames[slug] ?? fallback;

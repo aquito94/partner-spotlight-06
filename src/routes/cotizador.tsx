@@ -6,21 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { priceDisclaimer, solutions } from "@/data/portfolio";
+import { getCapabilityName } from "@/data/enterprise";
 
 export const Route = createFileRoute("/cotizador")({
   head: () => ({
     meta: [
-      { title: "Cotizador referencial · Netlife Business" },
+      { title: "Inversión referencial · Netlife Business" },
       {
         name: "description",
         content:
-          "Estima un rango mensual y de implementación según las soluciones, usuarios y cámaras que necesita el cliente.",
+          "Diferencia soluciones estandarizadas de proyectos empresariales y prepara una referencia inicial antes del diagnóstico.",
       },
-      { property: "og:title", content: "Cotizador referencial · Netlife Business" },
+      { property: "og:title", content: "Inversión referencial · Netlife Business" },
       {
         property: "og:description",
         content: "Valores de entrada para orientar la conversación antes del discovery.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cotizador,
@@ -70,17 +73,17 @@ ${priceDisclaimer}`;
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-14">
-      <p className="text-xs tracking-widest text-primary uppercase">Modelo comercial</p>
-      <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Cotizador referencial</h1>
+      <p className="text-xs tracking-widest text-primary uppercase">Inversión y alcance</p>
+      <h1 className="mt-3 text-4xl font-normal sm:text-5xl">Primero alcance. Después inversión.</h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
-        Sirve para ordenar la conversación, no para cerrar precio. El valor final depende de alcance,
-        módulos, volumen e integraciones.
+        Las soluciones estandarizadas pueden tener valores de entrada. Los proyectos empresariales se
+        definen por alcance, volumen, integraciones, complejidad y caso de negocio.
       </p>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <Card className="border-border/70 bg-surface/70 p-6">
           <p className="text-xs tracking-widest text-muted-foreground uppercase">
-            1. Soluciones a considerar
+            Soluciones estandarizadas a considerar
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {solutions.map((s) => {
@@ -96,7 +99,7 @@ ${priceDisclaimer}`;
                       : "border-border bg-secondary/30 hover:border-primary/40"
                   }`}
                 >
-                  <p className="text-sm font-medium">{s.name}</p>
+                  <p className="text-sm font-medium">{getCapabilityName(s.slug, s.name)}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{s.entryPrice}</p>
                 </button>
               );
@@ -173,8 +176,13 @@ ${priceDisclaimer}`;
               Copiar resumen
             </Button>
             <Button asChild className="mt-2 w-full">
-              <Link to="/oportunidad">Registrar oportunidad</Link>
+              <Link to="/oportunidad">Hablar con un asesor</Link>
             </Button>
+          </Card>
+          <Card className="border-border bg-ink p-6 text-primary-foreground">
+            <p className="text-xs tracking-widest text-cyan uppercase">Proyectos empresariales</p>
+            <p className="mt-3 font-display text-xl">Inversión según diagnóstico, alcance, integraciones, volumen, complejidad y caso de negocio.</p>
+            <p className="mt-3 text-sm text-primary-foreground/60">No se presenta un precio fijo cuando el proceso requiere arquitectura o desarrollo a medida.</p>
           </Card>
         </div>
       </div>

@@ -11,6 +11,7 @@ import {
   sectorCases,
   solutions,
 } from "@/data/portfolio";
+import { getCapabilityName } from "@/data/enterprise";
 
 export const Route = createFileRoute("/soluciones/$slug")({
   loader: ({ params }) => {
@@ -25,13 +26,16 @@ export const Route = createFileRoute("/soluciones/$slug")({
       };
     }
     const { solution } = loaderData;
-    const description = `${solution.pitch} ${solution.entryPrice}.`;
+    const capabilityName = getCapabilityName(solution.slug, solution.name);
+    const description = `${capabilityName}: ${solution.pitch}`;
     return {
       meta: [
-        { title: `${solution.name} · Netlife Business` },
+        { title: `${capabilityName} · Netlife Business` },
         { name: "description", content: description },
-        { property: "og:title", content: `${solution.name} · Netlife Business` },
+        { property: "og:title", content: `${capabilityName} · Netlife Business` },
         { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
@@ -42,6 +46,7 @@ function SolutionDetail() {
   const { solution } = Route.useLoaderData();
   const related = solutions.filter((s) => s.slug !== solution.slug).slice(0, 3);
   const cases = sectorCases.filter((c) => c.slugs.includes(solution.slug));
+  const capabilityName = getCapabilityName(solution.slug, solution.name);
 
   return (
     <div className="mx-auto max-w-7xl px-5 py-12">
@@ -49,27 +54,27 @@ function SolutionDetail() {
         to="/soluciones"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
       >
-        <ArrowLeft className="size-4" /> Volver al portafolio
+        <ArrowLeft className="size-4" /> Volver a capacidades
       </Link>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_0.9fr]">
         <div>
           <p className="text-xs tracking-widest text-primary uppercase">
-            Solución {solution.code}
+            Capacidad empresarial {solution.code}
           </p>
-          <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">{solution.name}</h1>
+          <h1 className="mt-3 text-4xl font-normal sm:text-5xl">{capabilityName}</h1>
           <p className="mt-2 text-lg text-primary">{solution.tagline}</p>
           <p className="mt-5 text-muted-foreground">{solution.pitch}</p>
 
           <Card className="mt-8 border-primary/30 bg-primary/5 p-6">
-            <p className="text-xs tracking-widest text-primary uppercase">Se vende como</p>
+            <p className="text-xs tracking-widest text-primary uppercase">Impacto empresarial</p>
             <p className="mt-2 font-display text-xl leading-snug">{solution.sellsAs}</p>
           </Card>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             <div>
               <p className="text-xs tracking-widest text-muted-foreground uppercase">
-                Casos de uso
+                 Procesos que puede transformar
               </p>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 {solution.useCases.map((u) => (
@@ -120,14 +125,14 @@ function SolutionDetail() {
                 <Link to="/cotizador">Estimar inversión</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link to="/oportunidad">Registrar oportunidad</Link>
+                <Link to="/oportunidad">Hablar con un consultor</Link>
               </Button>
             </div>
           </Card>
 
           <Card className="border-border/70 bg-surface/70 p-6">
             <p className="text-xs tracking-widest text-muted-foreground uppercase">
-              Sectores donde abre mejor
+               Sectores con procesos aplicables
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {solution.sectors.map((s) => (
@@ -142,7 +147,7 @@ function SolutionDetail() {
 
       {cases.length > 0 && (
         <section className="mt-16">
-          <h2 className="text-2xl font-semibold">Conversaciones típicas</h2>
+          <h2 className="text-3xl font-normal">Escenarios de aplicación</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {cases.map((c) => (
               <Card key={c.sector} className="border-border/70 bg-surface/70 p-6">
@@ -157,12 +162,12 @@ function SolutionDetail() {
       )}
 
       <section className="mt-16">
-        <h2 className="text-2xl font-semibold">Otras puertas de entrada</h2>
+        <h2 className="text-3xl font-normal">Capacidades que pueden integrarse</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {related.map((s) => (
             <Link key={s.slug} to="/soluciones/$slug" params={{ slug: s.slug }} className="group">
               <Card className="h-full border-border/70 bg-surface/70 p-6 transition-colors group-hover:border-primary/50">
-                <p className="font-display text-lg font-semibold">{s.name}</p>
+                <p className="font-display text-xl font-semibold">{getCapabilityName(s.slug, s.name)}</p>
                 <p className="mt-1 text-sm text-primary">{s.tagline}</p>
                 <p className="mt-3 text-sm text-muted-foreground">{s.entryPrice}</p>
               </Card>

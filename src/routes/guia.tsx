@@ -34,6 +34,8 @@ export const Route = createFileRoute("/guia")({
         property: "og:description",
         content: "Cómo detectar, construir y escalar oportunidades con Netlife Business.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Guia,
