@@ -195,6 +195,17 @@ function Oportunidad() {
               </pre>
               <div className="mt-4 grid gap-2">
                 <Button
+                  onClick={() => {
+                    window.location.href = `mailto:${destinatarios.join(
+                      ",",
+                    )}?subject=${encodeURIComponent(
+                      `Solicitud de consultoría · ${form.empresa}`,
+                    )}&body=${encodeURIComponent(summary)}`;
+                  }}
+                >
+                  <Mail className="mr-1 size-4" /> Abrir mi correo y enviar
+                </Button>
+                <Button
                   variant="outline"
                   onClick={() => {
                     navigator.clipboard?.writeText(summary);
@@ -210,10 +221,11 @@ function Oportunidad() {
             </>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Completa el formulario y presiona “Hablar con un consultor” para enviar tu
-              solicitud a Netlife Business.
+              Completa el formulario y presiona “Hablar con un consultor”: se abrirá tu correo con
+              todos los datos listos para enviar a Netlife Business.
             </p>
           )}
+
         </Card>
       </div>
     </div>
