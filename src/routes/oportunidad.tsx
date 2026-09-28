@@ -201,8 +201,8 @@ function Oportunidad() {
             </>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Completa el formulario y presiona “Generar resumen” para obtener el texto listo para
-              enviar a Netlife Business.
+              Completa el formulario y presiona “Hablar con un consultor” para enviar tu
+              solicitud a Netlife Business.
             </p>
           )}
         </Card>
