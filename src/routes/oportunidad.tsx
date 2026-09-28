@@ -73,7 +73,7 @@ function Oportunidad() {
   );
 
   const missing = ["empresa", "nombre", "email"].filter(
-    (k) => !form[k as keyof typeof initial].trim(),
+    (k) => !(form[k as keyof typeof initial] ?? "").trim(),
   );
 
   const download = () => {
