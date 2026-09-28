@@ -134,58 +134,9 @@ function Oportunidad() {
                 ))}
               </div>
             </div>
-            <Field label="Contacto" value={form.contacto} onChange={(v) => set("contacto", v)} />
+            <Field label="Nombre" value={form.nombre} onChange={(v) => set("nombre", v)} />
             <Field label="Correo" value={form.email} onChange={(v) => set("email", v)} />
             <Field label="Teléfono" value={form.telefono} onChange={(v) => set("telefono", v)} />
-            <Field
-              label="Responsable en el cliente"
-              value={form.responsable}
-              onChange={(v) => set("responsable", v)}
-            />
-            <Field
-              label="Volumen del proceso (al mes)"
-              value={form.volumen}
-              onChange={(v) => set("volumen", v)}
-            />
-            <Field
-              label="Usuarios involucrados"
-              value={form.usuarios}
-              onChange={(v) => set("usuarios", v)}
-            />
-            <Field
-              label="Fecha objetivo"
-              type="date"
-              value={form.fecha}
-              onChange={(v) => set("fecha", v)}
-            />
-            <Field
-              label="Sistemas actuales"
-              value={form.sistemas}
-              onChange={(v) => set("sistemas", v)}
-            />
-          </div>
-
-          <div className="mt-6 grid gap-5">
-            <AreaField
-              label="Problema detectado"
-              value={form.problema}
-              onChange={(v) => set("problema", v)}
-            />
-            <AreaField
-              label="Cómo se hace hoy (proceso actual)"
-              value={form.proceso}
-              onChange={(v) => set("proceso", v)}
-            />
-            <AreaField
-              label="Resultado esperado"
-              value={form.resultado}
-              onChange={(v) => set("resultado", v)}
-            />
-            <AreaField
-              label="Notas y próximo paso"
-              value={form.notas}
-              onChange={(v) => set("notas", v)}
-            />
           </div>
 
           <div className="mt-6">
