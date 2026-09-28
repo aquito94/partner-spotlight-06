@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { escalationMinimum, sectors, solutions } from "@/data/portfolio";
 import { getCapabilityName } from "@/data/enterprise";
 
@@ -35,18 +34,9 @@ export const Route = createFileRoute("/oportunidad")({
 const initial = {
   empresa: "",
   sector: "",
-  contacto: "",
+  nombre: "",
   email: "",
   telefono: "",
-  problema: "",
-  proceso: "",
-  volumen: "",
-  usuarios: "",
-  sistemas: "",
-  resultado: "",
-  responsable: "",
-  fecha: "",
-  notas: "",
 };
 
 function Oportunidad() {
@@ -65,30 +55,24 @@ function Oportunidad() {
       [
         "BRIEF DE OPORTUNIDAD · NETLIFE BUSINESS",
         `Empresa: ${form.empresa}`,
-        `Sector: ${form.sector}`,
-        `Contacto: ${form.contacto} · ${form.email} · ${form.telefono}`,
-        `Capacidades consideradas: ${interes
-          .map((i) => {
-            const solution = solutions.find((s) => s.slug === i);
-            return solution ? getCapabilityName(solution.slug, solution.name) : undefined;
-          })
-          .filter(Boolean)
-          .join(", ")}`,
-        "",
-        `Problema: ${form.problema}`,
-        `Proceso actual: ${form.proceso}`,
-        `Volumen: ${form.volumen}`,
-        `Usuarios: ${form.usuarios}`,
-        `Sistemas actuales: ${form.sistemas}`,
-        `Resultado esperado: ${form.resultado}`,
-        `Responsable en el cliente: ${form.responsable}`,
-        `Fecha objetivo: ${form.fecha}`,
-        `Notas: ${form.notas}`,
+        `Sector: ${form.sector || "No indicado"}`,
+        `Nombre: ${form.nombre}`,
+        `Correo: ${form.email}`,
+        `Teléfono: ${form.telefono || "No indicado"}`,
+        `Capacidades consideradas: ${
+          interes
+            .map((i) => {
+              const solution = solutions.find((s) => s.slug === i);
+              return solution ? getCapabilityName(solution.slug, solution.name) : undefined;
+            })
+            .filter(Boolean)
+            .join(", ") || "Sin selección"
+        }`,
       ].join("\n"),
     [form, interes],
   );
 
-  const missing = ["empresa", "problema", "proceso", "resultado"].filter(
+  const missing = ["empresa", "nombre", "email"].filter(
     (k) => !form[k as keyof typeof initial].trim(),
   );
 
@@ -149,58 +133,9 @@ function Oportunidad() {
                 ))}
               </div>
             </div>
-            <Field label="Contacto" value={form.contacto} onChange={(v) => set("contacto", v)} />
+            <Field label="Nombre" value={form.nombre} onChange={(v) => set("nombre", v)} />
             <Field label="Correo" value={form.email} onChange={(v) => set("email", v)} />
             <Field label="Teléfono" value={form.telefono} onChange={(v) => set("telefono", v)} />
-            <Field
-              label="Responsable en el cliente"
-              value={form.responsable}
-              onChange={(v) => set("responsable", v)}
-            />
-            <Field
-              label="Volumen del proceso (al mes)"
-              value={form.volumen}
-              onChange={(v) => set("volumen", v)}
-            />
-            <Field
-              label="Usuarios involucrados"
-              value={form.usuarios}
-              onChange={(v) => set("usuarios", v)}
-            />
-            <Field
-              label="Fecha objetivo"
-              type="date"
-              value={form.fecha}
-              onChange={(v) => set("fecha", v)}
-            />
-            <Field
-              label="Sistemas actuales"
-              value={form.sistemas}
-              onChange={(v) => set("sistemas", v)}
-            />
-          </div>
-
-          <div className="mt-6 grid gap-5">
-            <AreaField
-              label="Problema detectado"
-              value={form.problema}
-              onChange={(v) => set("problema", v)}
-            />
-            <AreaField
-              label="Cómo se hace hoy (proceso actual)"
-              value={form.proceso}
-              onChange={(v) => set("proceso", v)}
-            />
-            <AreaField
-              label="Resultado esperado"
-              value={form.resultado}
-              onChange={(v) => set("resultado", v)}
-            />
-            <AreaField
-              label="Notas y próximo paso"
-              value={form.notas}
-              onChange={(v) => set("notas", v)}
-            />
           </div>
 
           <div className="mt-6">
@@ -229,14 +164,14 @@ function Oportunidad() {
             className="mt-8 w-full"
             onClick={() => {
               if (missing.length > 0) {
-                toast.error("Falta información clave: empresa, problema, proceso y resultado.");
+                toast.error("Falta información clave: empresa, nombre y correo.");
                 return;
               }
               setDone(true);
-              toast.success("Resumen generado. Cópialo o descárgalo.");
+              toast.success("Solicitud registrada. Un consultor te contactará.");
             }}
           >
-            Generar brief
+            Hablar con un consultor
           </Button>
         </Card>
 
@@ -266,8 +201,8 @@ function Oportunidad() {
             </>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Completa el formulario y presiona “Generar resumen” para obtener el texto listo para
-              enviar a Netlife Business.
+              Completa el formulario y presiona “Hablar con un consultor” para enviar tu
+              solicitud a Netlife Business.
             </p>
           )}
         </Card>
@@ -295,23 +230,3 @@ function Field({
   );
 }
 
-function AreaField({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div>
-      <Label className="text-xs tracking-widest text-muted-foreground uppercase">{label}</Label>
-      <Textarea
-        className="mt-2 min-h-24"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </div>
-  );
-}
