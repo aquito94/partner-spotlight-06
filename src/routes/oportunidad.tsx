@@ -165,14 +165,14 @@ function Oportunidad() {
             className="mt-8 w-full"
             onClick={() => {
               if (missing.length > 0) {
-                toast.error("Falta información clave: empresa, problema, proceso y resultado.");
+                toast.error("Falta información clave: empresa, nombre y correo.");
                 return;
               }
               setDone(true);
-              toast.success("Resumen generado. Cópialo o descárgalo.");
+              toast.success("Solicitud registrada. Un consultor te contactará.");
             }}
           >
-            Generar brief
+            Hablar con un consultor
           </Button>
         </Card>
 
