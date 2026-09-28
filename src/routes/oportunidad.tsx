@@ -230,23 +230,3 @@ function Field({
   );
 }
 
-function AreaField({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div>
-      <Label className="text-xs tracking-widest text-muted-foreground uppercase">{label}</Label>
-      <Textarea
-        className="mt-2 min-h-24"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </div>
-  );
-}
