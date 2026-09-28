@@ -35,18 +35,9 @@ export const Route = createFileRoute("/oportunidad")({
 const initial = {
   empresa: "",
   sector: "",
-  contacto: "",
+  nombre: "",
   email: "",
   telefono: "",
-  problema: "",
-  proceso: "",
-  volumen: "",
-  usuarios: "",
-  sistemas: "",
-  resultado: "",
-  responsable: "",
-  fecha: "",
-  notas: "",
 };
 
 function Oportunidad() {
@@ -65,30 +56,24 @@ function Oportunidad() {
       [
         "BRIEF DE OPORTUNIDAD · NETLIFE BUSINESS",
         `Empresa: ${form.empresa}`,
-        `Sector: ${form.sector}`,
-        `Contacto: ${form.contacto} · ${form.email} · ${form.telefono}`,
-        `Capacidades consideradas: ${interes
-          .map((i) => {
-            const solution = solutions.find((s) => s.slug === i);
-            return solution ? getCapabilityName(solution.slug, solution.name) : undefined;
-          })
-          .filter(Boolean)
-          .join(", ")}`,
-        "",
-        `Problema: ${form.problema}`,
-        `Proceso actual: ${form.proceso}`,
-        `Volumen: ${form.volumen}`,
-        `Usuarios: ${form.usuarios}`,
-        `Sistemas actuales: ${form.sistemas}`,
-        `Resultado esperado: ${form.resultado}`,
-        `Responsable en el cliente: ${form.responsable}`,
-        `Fecha objetivo: ${form.fecha}`,
-        `Notas: ${form.notas}`,
+        `Sector: ${form.sector || "No indicado"}`,
+        `Nombre: ${form.nombre}`,
+        `Correo: ${form.email}`,
+        `Teléfono: ${form.telefono || "No indicado"}`,
+        `Capacidades consideradas: ${
+          interes
+            .map((i) => {
+              const solution = solutions.find((s) => s.slug === i);
+              return solution ? getCapabilityName(solution.slug, solution.name) : undefined;
+            })
+            .filter(Boolean)
+            .join(", ") || "Sin selección"
+        }`,
       ].join("\n"),
     [form, interes],
   );
 
-  const missing = ["empresa", "problema", "proceso", "resultado"].filter(
+  const missing = ["empresa", "nombre", "email"].filter(
     (k) => !form[k as keyof typeof initial].trim(),
   );
 
