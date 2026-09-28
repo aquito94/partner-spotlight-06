@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Copy, Download } from "lucide-react";
+import { Copy, Download, Mail } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
