@@ -168,11 +168,17 @@ function Oportunidad() {
                 return;
               }
               setDone(true);
-              toast.success("Solicitud registrada. Un consultor te contactará.");
+              const asunto = `Solicitud de consultoría · ${form.empresa}`;
+              const mailto = `mailto:${destinatarios.join(",")}?subject=${encodeURIComponent(
+                asunto,
+              )}&body=${encodeURIComponent(summary)}`;
+              window.location.href = mailto;
+              toast.success("Abrimos tu correo con la solicitud lista para enviar.");
             }}
           >
             Hablar con un consultor
           </Button>
+
         </Card>
 
         <Card className="h-fit border-border/70 bg-surface/70 p-6">
