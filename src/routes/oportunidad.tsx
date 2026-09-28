@@ -31,6 +31,8 @@ export const Route = createFileRoute("/oportunidad")({
   component: Oportunidad,
 });
 
+const destinatarios = ["grios@netlife.net.ec", "arquito@netlife.net.ec"];
+
 const initial = {
   empresa: "",
   sector: "",
@@ -38,6 +40,7 @@ const initial = {
   email: "",
   telefono: "",
 };
+
 
 function Oportunidad() {
   const [form, setForm] = useState(initial);
