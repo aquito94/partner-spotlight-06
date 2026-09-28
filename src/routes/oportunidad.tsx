@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Copy, Download } from "lucide-react";
+import { Copy, Download, Mail } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
@@ -31,6 +31,8 @@ export const Route = createFileRoute("/oportunidad")({
   component: Oportunidad,
 });
 
+const destinatarios = ["grios@netlife.net.ec", "arquito@netlife.net.ec"];
+
 const initial = {
   empresa: "",
   sector: "",
@@ -38,6 +40,7 @@ const initial = {
   email: "",
   telefono: "",
 };
+
 
 function Oportunidad() {
   const [form, setForm] = useState(initial);
@@ -168,11 +171,17 @@ function Oportunidad() {
                 return;
               }
               setDone(true);
-              toast.success("Solicitud registrada. Un consultor te contactará.");
+              const asunto = `Solicitud de consultoría · ${form.empresa}`;
+              const mailto = `mailto:${destinatarios.join(",")}?subject=${encodeURIComponent(
+                asunto,
+              )}&body=${encodeURIComponent(summary)}`;
+              window.location.href = mailto;
+              toast.success("Abrimos tu correo con la solicitud lista para enviar.");
             }}
           >
             Hablar con un consultor
           </Button>
+
         </Card>
 
         <Card className="h-fit border-border/70 bg-surface/70 p-6">
@@ -185,6 +194,17 @@ function Oportunidad() {
                 {summary}
               </pre>
               <div className="mt-4 grid gap-2">
+                <Button
+                  onClick={() => {
+                    window.location.href = `mailto:${destinatarios.join(
+                      ",",
+                    )}?subject=${encodeURIComponent(
+                      `Solicitud de consultoría · ${form.empresa}`,
+                    )}&body=${encodeURIComponent(summary)}`;
+                  }}
+                >
+                  <Mail className="mr-1 size-4" /> Abrir mi correo y enviar
+                </Button>
                 <Button
                   variant="outline"
                   onClick={() => {
@@ -201,10 +221,11 @@ function Oportunidad() {
             </>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Completa el formulario y presiona “Hablar con un consultor” para enviar tu
-              solicitud a Netlife Business.
+              Completa el formulario y presiona “Hablar con un consultor”: se abrirá tu correo con
+              todos los datos listos para enviar a Netlife Business.
             </p>
           )}
+
         </Card>
       </div>
     </div>
