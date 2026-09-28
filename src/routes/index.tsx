@@ -45,7 +45,7 @@ function Home() {
           <div className="max-w-3xl">
             <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Arquitectura empresarial orientada a resultados</p>
             <h1 className="mt-6 text-5xl leading-[0.98] font-normal text-balance sm:text-6xl lg:text-7xl">
-              Transformamos problemas de negocio en <span className="italic text-primary">sistemas inteligentes.</span>
+              Transformamos problemas de negocio en <span className="font-semibold text-primary">sistemas inteligentes.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-foreground/80 sm:text-xl">
               Conectamos inteligencia artificial, automatización, datos, canales e integraciones para transformar ventas, servicio, operaciones y toma de decisiones.
@@ -159,7 +159,7 @@ function Home() {
           <SectionHeading dark eyebrow="Caso de negocio" title="Del problema al ROI" text="Antes de elegir tecnología construimos una línea base, cuantificamos la oportunidad y acordamos cómo medir el resultado." />
           <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-primary-foreground/15 bg-primary-foreground/15 md:grid-cols-3 lg:grid-cols-6">{roiMethod.map((item) => <div key={item.step} className="bg-ink p-6"><p className="text-xs text-cyan">{item.step}</p><h3 className="mt-5 text-xl">{item.title}</h3><p className="mt-3 text-sm leading-relaxed text-primary-foreground/55">{item.question}</p></div>)}</div>
           <div className="mt-10 flex flex-wrap gap-2">{outcomeKpis.map((kpi) => <span key={kpi} className="rounded-md border border-primary-foreground/15 px-3 py-2 text-xs text-primary-foreground/65">{kpi}</span>)}</div>
-          <p className="mt-16 max-w-4xl font-display text-3xl leading-tight sm:text-5xl">No implementamos IA para decir que usamos IA. <span className="italic text-cyan">La implementamos cuando existe un caso de negocio.</span></p>
+          <p className="mt-16 max-w-4xl font-display text-3xl leading-tight sm:text-5xl">No implementamos IA para decir que usamos IA. <span className="font-semibold text-cyan">La implementamos cuando existe un caso de negocio.</span></p>
         </div>
       </section>
 
@@ -182,13 +182,13 @@ function Home() {
 
       <section id="seguridad" className="scroll-mt-24 border-y border-border bg-surface py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <div><p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Seguridad y gobierno</p><h2 className="mt-4 text-4xl leading-tight sm:text-5xl">La innovación empresarial necesita velocidad. <span className="italic text-primary">También control.</span></h2><p className="mt-6 text-muted-foreground">Diseñamos trazabilidad, accesos e integración segura como parte de la arquitectura, no como una revisión posterior.</p></div>
+          <div><p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Seguridad y gobierno</p><h2 className="mt-4 text-4xl leading-tight sm:text-5xl">La innovación empresarial necesita velocidad. <span className="font-semibold text-primary">También control.</span></h2><p className="mt-6 text-muted-foreground">Diseñamos trazabilidad, accesos e integración segura como parte de la arquitectura, no como una revisión posterior.</p></div>
           <div><div className="grid gap-3 sm:grid-cols-2">{securityPillars.map((item) => <div key={item} className="flex items-center gap-3 rounded-md border border-border bg-card p-4 text-sm"><ShieldCheck className="size-5 text-primary" />{item}</div>)}</div><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-md border border-border bg-card px-3 py-2 text-xs">ISO/IEC 27001 (AENOR)</span><span className="rounded-md border border-border bg-card px-3 py-2 text-xs">PCI DSS Verified</span></div></div>
         </div>
       </section>
 
       <section className="bg-card py-24">
-        <div className="mx-auto max-w-5xl px-5 text-center"><p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Siguiente decisión</p><h2 className="mt-5 text-4xl leading-tight sm:text-6xl">No necesitas saber qué tecnología comprar. <span className="italic text-primary">Necesitas saber qué problema vale la pena resolver.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">Cuéntanos qué proceso quieres mejorar. Analizamos la operación, identificamos la oportunidad y diseñamos la arquitectura adecuada.</p><div className="mt-9 flex flex-wrap justify-center gap-3"><Button asChild size="lg"><Link to="/diagnostico">Quiero identificar una oportunidad <ArrowRight /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/oportunidad">Hablar con un consultor</Link></Button></div></div>
+        <div className="mx-auto max-w-5xl px-5 text-center"><p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">Siguiente decisión</p><h2 className="mt-5 text-4xl leading-tight sm:text-6xl">No necesitas saber qué tecnología comprar. <span className="font-semibold text-primary">Necesitas saber qué problema vale la pena resolver.</span></h2><p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">Cuéntanos qué proceso quieres mejorar. Analizamos la operación, identificamos la oportunidad y diseñamos la arquitectura adecuada.</p><div className="mt-9 flex flex-wrap justify-center gap-3"><Button asChild size="lg"><Link to="/diagnostico">Quiero identificar una oportunidad <ArrowRight /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/oportunidad">Hablar con un consultor</Link></Button></div></div>
       </section>
     </div>
   );
