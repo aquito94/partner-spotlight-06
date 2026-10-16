@@ -93,23 +93,6 @@ function SolutionsIndex() {
               ))}
             </div>
           </div>
-
-          <div className="max-w-md">
-            <div className="flex items-center justify-between text-xs tracking-widest text-muted-foreground uppercase">
-              <span>Precio de entrada mensual</span>
-              <span className="text-primary">
-                {maxMonthly >= 400 ? "Sin límite" : `hasta $${maxMonthly}`}
-              </span>
-            </div>
-            <Slider
-              className="mt-4"
-              value={[maxMonthly]}
-              min={10}
-              max={400}
-              step={10}
-              onValueChange={(v) => setMaxMonthly(v[0] ?? 400)}
-            />
-          </div>
         </div>
       </Card>
 
