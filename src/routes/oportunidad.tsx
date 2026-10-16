@@ -98,7 +98,7 @@ function Oportunidad() {
       </h1>
       <p className="mt-3 max-w-2xl text-muted-foreground">
         Organizamos el problema, el proceso actual, el impacto y el resultado esperado para diseñar
-        una conversación útil con un consultor. Nada se almacena en línea.
+        una conversación útil con un consultor.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
