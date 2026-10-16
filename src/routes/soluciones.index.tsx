@@ -5,9 +5,7 @@ import { useMemo, useState } from "react";
 import { SolutionDemo } from "@/components/site/SolutionDemo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Slider } from "@/components/ui/slider";
 import {
-  priceDisclaimer,
   problemTags,
   sectors,
   solutions,
@@ -40,17 +38,15 @@ export const Route = createFileRoute("/soluciones/")({
 function SolutionsIndex() {
   const [sector, setSector] = useState<Sector | "todos">("todos");
   const [tag, setTag] = useState<ProblemTag | "todos">("todos");
-  const [maxMonthly, setMaxMonthly] = useState(400);
 
   const filtered = useMemo(
     () =>
       solutions.filter((s) => {
         if (sector !== "todos" && !s.sectors.includes(sector)) return false;
         if (tag !== "todos" && !s.tags.includes(tag)) return false;
-        if (s.monthlyFrom !== null && s.monthlyFrom > maxMonthly) return false;
         return true;
       }),
-    [sector, tag, maxMonthly],
+    [sector, tag],
   );
 
   return (
@@ -133,7 +129,6 @@ function SolutionsIndex() {
               <p className="mt-1 font-display text-2xl font-semibold">{getCapabilityName(s.slug, s.name)}</p>
               <p className="text-sm text-primary">{s.tagline}</p>
               <p className="mt-3 flex-1 text-sm text-muted-foreground">{s.pitch}</p>
-              <p className="mt-4 text-sm">{s.entryPrice}</p>
               <Button asChild variant="outline" className="mt-4 w-full">
                 <Link to="/soluciones/$slug" params={{ slug: s.slug }}>
                   Explorar capacidad <ArrowRight className="ml-1 size-4" />
@@ -146,11 +141,10 @@ function SolutionsIndex() {
 
       {filtered.length === 0 && (
         <Card className="mt-6 border-border/70 bg-surface/70 p-8 text-center text-sm text-muted-foreground">
-          Ninguna solución cumple esos filtros. Amplía el presupuesto o cambia el sector.
+          Ninguna solución cumple esos filtros. Cambia el sector o el problema.
         </Card>
       )}
 
-      <p className="mt-8 text-xs text-muted-foreground">{priceDisclaimer}</p>
     </div>
   );
 }

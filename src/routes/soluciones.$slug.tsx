@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   getSolution,
-  priceDisclaimer,
   problemTags,
   sectorCases,
   solutions,
@@ -104,13 +103,9 @@ function SolutionDetail() {
 
           <Card className="border-border/70 bg-surface/70 p-6">
             <p className="text-xs tracking-widest text-muted-foreground uppercase">
-              Valor de entrada
+              Frentes que resuelve
             </p>
-            <p className="mt-2 font-display text-2xl font-semibold text-primary">
-              {solution.entryPrice}
-            </p>
-            <p className="mt-3 text-xs text-muted-foreground">{priceDisclaimer}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-2">
               {solution.tags.map((t) => (
                 <span
                   key={t}
@@ -122,7 +117,7 @@ function SolutionDetail() {
             </div>
             <div className="mt-6 grid gap-2">
               <Button asChild>
-                <Link to="/cotizador">Estimar inversión</Link>
+                <Link to="/diagnostico">Diagnosticar una oportunidad</Link>
               </Button>
               <Button asChild variant="outline">
                 <Link to="/oportunidad">Hablar con un consultor</Link>
@@ -169,7 +164,6 @@ function SolutionDetail() {
               <Card className="h-full border-border/70 bg-surface/70 p-6 transition-colors group-hover:border-primary/50">
                 <p className="font-display text-xl font-semibold">{getCapabilityName(s.slug, s.name)}</p>
                 <p className="mt-1 text-sm text-primary">{s.tagline}</p>
-                <p className="mt-3 text-sm text-muted-foreground">{s.entryPrice}</p>
               </Card>
             </Link>
           ))}
