@@ -151,7 +151,6 @@ function Diagnostico() {
                     <span className="rounded-full bg-primary/15 px-2.5 py-1 text-xs text-primary">
                       Prioridad {i + 1}
                     </span>
-                    <span className="text-xs text-muted-foreground">{solution.entryPrice}</span>
                   </div>
                   <p className="mt-3 font-display text-2xl font-semibold">{getCapabilityName(solution.slug, solution.name)}</p>
                   <p className="mt-1 text-sm text-primary">{solution.tagline}</p>
