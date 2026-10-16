@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Copy, Download, Mail } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { Copy, Download } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
+import { enviarOportunidad } from "@/lib/oportunidad.functions";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -31,8 +33,6 @@ export const Route = createFileRoute("/oportunidad")({
   component: Oportunidad,
 });
 
-const destinatarios = ["grios@netlife.net.ec", "arquito@netlife.net.ec"];
-
 const initial = {
   empresa: "",
   sector: "",
@@ -41,11 +41,12 @@ const initial = {
   telefono: "",
 };
 
-
 function Oportunidad() {
   const [form, setForm] = useState(initial);
   const [interes, setInteres] = useState<string[]>([]);
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const enviar = useServerFn(enviarOportunidad);
 
   const set = (key: keyof typeof initial, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -165,21 +166,43 @@ function Oportunidad() {
 
           <Button
             className="mt-8 w-full"
-            onClick={() => {
+            disabled={sending}
+            onClick={async () => {
               if (missing.length > 0) {
                 toast.error("Falta información clave: empresa, nombre y correo.");
                 return;
               }
-              setDone(true);
-              const asunto = `Solicitud de consultoría · ${form.empresa}`;
-              const mailto = `mailto:${destinatarios.join(",")}?subject=${encodeURIComponent(
-                asunto,
-              )}&body=${encodeURIComponent(summary)}`;
-              window.location.href = mailto;
-              toast.success("Abrimos tu correo con la solicitud lista para enviar.");
+              if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+                toast.error("Revisa el correo ingresado.");
+                return;
+              }
+              setSending(true);
+              try {
+                await enviar({
+                  data: {
+                    empresa: form.empresa.trim(),
+                    sector: form.sector,
+                    nombre: form.nombre.trim(),
+                    email: form.email.trim(),
+                    telefono: form.telefono.trim(),
+                    capacidades: interes
+                      .map((i) => {
+                        const s = solutions.find((x) => x.slug === i);
+                        return s ? getCapabilityName(s.slug, s.name) : "";
+                      })
+                      .filter(Boolean),
+                  },
+                });
+                setDone(true);
+                toast.success("Solicitud enviada. Un consultor te contactará pronto.");
+              } catch {
+                toast.error("No pudimos enviar la solicitud. Intenta nuevamente.");
+              } finally {
+                setSending(false);
+              }
             }}
           >
-            Hablar con un consultor
+            {sending ? "Enviando…" : "Hablar con un consultor"}
           </Button>
 
         </Card>
@@ -190,21 +213,13 @@ function Oportunidad() {
           </p>
           {done ? (
             <>
+              <p className="mt-3 text-sm font-semibold text-primary">
+                ¡Gracias! Tu solicitud fue enviada a nuestro equipo consultor.
+              </p>
               <pre className="mt-3 max-h-[26rem] overflow-auto rounded-md bg-background/60 p-3 text-xs whitespace-pre-wrap text-muted-foreground">
                 {summary}
               </pre>
               <div className="mt-4 grid gap-2">
-                <Button
-                  onClick={() => {
-                    window.location.href = `mailto:${destinatarios.join(
-                      ",",
-                    )}?subject=${encodeURIComponent(
-                      `Solicitud de consultoría · ${form.empresa}`,
-                    )}&body=${encodeURIComponent(summary)}`;
-                  }}
-                >
-                  <Mail className="mr-1 size-4" /> Abrir mi correo y enviar
-                </Button>
                 <Button
                   variant="outline"
                   onClick={() => {
@@ -221,8 +236,8 @@ function Oportunidad() {
             </>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Completa el formulario y presiona “Hablar con un consultor”: se abrirá tu correo con
-              todos los datos listos para enviar a Netlife Business.
+              Completa el formulario y presiona “Hablar con un consultor”: tu solicitud llegará
+              directamente al equipo de Netlife Business.
             </p>
           )}
 
